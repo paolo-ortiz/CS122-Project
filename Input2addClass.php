@@ -1,5 +1,8 @@
 <?php
 
+	//connect to database
+	include("config/db_connect.php");
+
 	$className = $subject = ""; //initialize values
 	$errors = array("className"=>"", "subject"=>""); //create array for errors
 
@@ -25,7 +28,22 @@
 		if (array_filter($errors)) {
 			//do nothing
 		} else {
-			header('Location: index.php'); //redirect to homepage
+			$className = mysqli_real_escape_string($conn, $_POST["className"]);
+			$subject = mysqli_real_escape_string($conn, $_POST["subject"]);
+
+			//create sql
+			$sql = "INSERT INTO section(sectionName, subject) VALUES('$className', '$subject')";
+
+			//save to db and check
+			if (mysqli_query($conn, $sql)) {
+				//success
+				header('Location: index.php'); //redirect to homepage
+			} else {
+				//error
+				echo "query error: " . mysqli_error($conn);
+			}
+
+
 		}
 
 	} //END OF POST
