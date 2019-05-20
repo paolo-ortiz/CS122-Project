@@ -24,15 +24,15 @@
             <div class="container">
                 <a href="#" class="brand-logo brand-text">Remove A Class</a>
             </div>
-        
-        </nav
-         <p>
-             <?php
-                    echo "You have successfully removed ";
-                    echo $_POST["className"];
-                    echo " Section ";
-                    echo $_POST["secName"];
-                    ?>
+
+        </nav> <p>
+        <?php
+        echo "You have successfully removed ";
+        echo $_POST["className"];
+        echo " Section ";
+        echo $_POST["secName"];
+        ?>
         </p>
     </body>
+
 </html>
