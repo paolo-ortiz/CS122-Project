@@ -13,9 +13,7 @@
             color: #cbb09c !important;
         }
     </style>
-
 </head>
-
     <body class="grey lighten-4">
         <!--BACKGROUND-->
         <nav class="white z-depth-0">
