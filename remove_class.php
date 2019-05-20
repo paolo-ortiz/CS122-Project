@@ -16,15 +16,12 @@
 
 </head>
 
-<body>
-
     <body class="grey lighten-4">
         <!--BACKGROUND-->
         <nav class="white z-depth-0">
             <div class="container">
                 <a href="#" class="brand-logo brand-text">Remove A Class</a>
             </div>
-
         </nav> <p>
         <?php
         echo "You have successfully removed ";

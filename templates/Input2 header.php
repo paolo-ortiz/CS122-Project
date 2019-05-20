@@ -27,35 +27,32 @@
 							<button class="btn brand z-depth-0" type="submit" name="action">Add Class
 							</button>
 						</form>
-	</li>
-						<li>
+					<li>
 						<!--ADD BUTTON-->
 						<form action=remove_class.php method=POST>
 							<!-- <input type=text placeholder="Class" name= className> -->
 							<button class="btn brand z-depth-0" type="submit" name="action">Remove Class
 							</button>
-					<div class="container" style="text-align:left">
-						<label>Class</label>
-						<select name=className class="browser-default">
-							<option value="" disabled selected>Choose your option</option>
-							<option name="className" value=Science>Science</option>
-							<option name="className" value=Math>Mathematics</option>
-							<option name="className" value=PE>Physical Education</option>
-							<option name="className" value=English>English</option>
-						</select>
-						<label>Section</label>
-						<select name=secName class="browser-default">
-							<option value="secName" disabled selected>Choose your option</option>
-							<option value=A name="secName">A</option>
-							<option value=B name="secName">B</option>
-							<option value=C name="secName">C</option>
-							<option value=D name="secName">D</option>
-						</select>
-	</li>
-					</div>
-					</form>
-	
+							<div class="container" style="text-align:left">
+								<label>Class</label>
+								<select name=className class="browser-default">
+									<option value="" disabled selected>Choose your option</option>
+									<option name="className" value=Science>Science</option>
+									<option name="className" value=Math>Mathematics</option>
+									<option name="className" value=PE>Physical Education</option>
+									<option name="className" value=English>English</option>
+								</select>
+								<label>Section</label>
+								<select name=secName class="browser-default">
+									<option value="secName" disabled selected>Choose your option</option>
+									<option value=A name="secName">A</option>
+									<option value=B name="secName">B</option>
+									<option value=C name="secName">C</option>
+									<option value=D name="secName">D</option>
+								</select>
+							</div>
+						</form>
 				</ul>
 			</div>
-	</nav>
+		</nav>
 	</body>
