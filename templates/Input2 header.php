@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
 	<title>INPUT SCREEN 2</title>
 	<link rel="stylesheet" href="css\bootstrap.min.css">
@@ -27,6 +28,7 @@
 	<br>
 	<div class="container-fluid">
 		<div class="row">
+			<div class="col-sm-auto">
 			<nav class="nav flex-sm-column">
 				<div class="container" style="text-align:left">
 					<p style="color:#595E80;">Add A Class</p>
@@ -61,49 +63,44 @@
 				</div>
 
 			</nav>
-				<div id="table" class="" style="align:left">
-					<table class="striped centered black-text">
-						<thead>
-							<tr>
-								<th>Class</th>
-								<th>Section</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<tr>
-								<td>Class_Variable</td>
-								<td>Section_Variable</td>
-								<td>
-									<form action=edit_class.php method=POST>
-										<!-- <input type=text placeholder="Class" name= className> -->
-										<button class="btn brand z-depth-0" type="submit" name="action">Edit Class
-										</button>
-								</td>
-							</tr>
-							<tr>
-								<td>Class_Variable</td>
-								<td>Section_Variable</td>
-								<td>
-									<form action=edit_class.php method=POST>
-										<!-- <input type=text placeholder="Class" name= className> -->
-										<button class="btn brand z-depth-0" type="submit" name="action">Edit Class
-										</button>
-								</td>
-							</tr>
-							<tr>
-								<td>Class_Variable</td>
-								<td>Section_Variable</td>
-								<td>
-									<form action=edit_class.php method=POST>
-										<!-- <input type=text placeholder="Class" name= className> -->
-										<button class="btn brand z-depth-0" type="submit" name="action">Edit Class
-										</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+	</div>
+<div id="table" class="col-sm" style="align:left;">
+  <table class="table table-striped" style="text-align:center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Class</th>
+      <th scope="col">Section</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Class_Variable</td>
+		<td>Section_Variable</td>
+      <td>
+		  <form action=edit_class.php method=POST>
+		  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    </tr>
+    <tr>
+      <th scope="row">2</th>
+	  <td>Class_Variable</td>
+		<td>Section_Variable</td>
+      <td>
+		  <form action=edit_class.php method=POST>
+		  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Class_Variable</td>
+		<td>Section_Variable</td>
+      <td>
+		  <form action=edit_class.php method=POST>
+		<button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>
+    </tr>
+  </tbody>
+</table>
+	</div>
+				
 		</div>
 	</div>
 </body>
