@@ -12,6 +12,9 @@
         .brand-text {
             color: #cbb09c !important;
         }
+        label {
+        width:100px;
+    }
     </style>
 </head>
     <body class="grey lighten-4">

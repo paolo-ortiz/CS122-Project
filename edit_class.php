@@ -10,6 +10,9 @@
     .brand-text {
         color: #29b6f6 !important;
     }
+    label {
+        width:100px;
+    }
     </style>
 </head>
 
@@ -35,7 +38,7 @@
                         <p style="color:#595E80;">Remove Student</p>
                         <form action=remove_student.php method=POST>
                             <label for=student_id><b>ID Number:</b></label>
-                            <input type=number placeholder="e.g. XXXXXX" name=student_id required>
+                            <input type=number placeholder="e.g. 123456" name=student_id required>
                             <br>
                             <button class="btn btn-outline-light my-2 my-sm-0"
                                 style="border-color:#5262CC; color:#5262CC;" type="submit">Remove</button>
