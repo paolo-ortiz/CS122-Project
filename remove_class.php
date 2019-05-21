@@ -28,6 +28,10 @@
         echo $_POST["secName"];
         ?>
         </p>
+        <form action=index.php method=POST>
+					<button class="btn brand z-depth-0" type="submit" name="action">Return 
+					</button>
+				</form>
     </body>
 
 </html>
