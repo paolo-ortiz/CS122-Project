@@ -1,6 +1,6 @@
-
+<!DOCTYPE html>
 <?php
-echo $_POST["reqType"]; 
+echo $_POST["req_type"]; 
 echo "<br>";
 echo $_POST["passing_score"];
 echo "<br>";

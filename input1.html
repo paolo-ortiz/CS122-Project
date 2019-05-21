@@ -1,32 +1,52 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Sign In</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <style type="text/css">
-        .brand {
-            background: #cbb09c !important;
-        }
+    <title>INPUT-SCREEN-1</title>
+    <link rel="stylesheet" href="css\bootstrap.min.css">
 
-        .brand-text {
-            color: #cbb09c !important;
-        }
+    <style type="text/css">
+    .brand {
+        background: #29b6f6 !important;
+    }
+
+    .brand-text {
+        color: #29b6f6 !important;
+    }
+
+    label {
+        width:100px;
+    }
     </style>
+
 </head>
 
 <body>
 
-    <body class="grey lighten-4">
-        <h1 style=text-align:center;>Sign In</h1>
-        <form action=submit_login.php method="POST">
-            <div class=container>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <nav class="navbar navbar-light" style="background-color:#333D80; color:#B3BDFF; font-face: 16px-apple-system">
+            <a class="navbar-brand" href="#" style="color:#B3BDFF;">
+                <!-- <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" -->
+                    <!-- class="d-inline-block align-top" alt=""> -->
+                <strong>Sign In</strong>
+            </a>
+        </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form action=index.php method="POST">
+            <div class=container style="text-align:center">
                 <label for=teacher_id><b>Teacher ID:</b></label>
                 <input type=text placeholder='Teacher ID' name=teacher_id required>
                 <br>
                 <label for=teacher_pw><b>Password:</b></label>
                 <input type=password placeholder='Password' name=teacher_pw required>
                 <br>
-                <button type=submit>Submit</button>
+                <button class="btn btn-outline-light my-2 my-sm-0"
+                                style="border-color:#5262CC; color:#5262CC;" type="submit">Sign In</button>
             </div>
         </form>
     </body>

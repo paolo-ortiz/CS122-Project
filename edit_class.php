@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
     <title>INPUT SCREEN 2</title>
     <link rel="stylesheet" href="css\bootstrap.min.css">
