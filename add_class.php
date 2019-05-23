@@ -1,3 +1,17 @@
+<?php 
+
+	//connect to database
+	include('config/db_connect.php');
+
+	if(isset($_GET['submit'])) {
+		echo $_GET['subject'];
+		echo $_GET['section'];
+	}
+
+
+
+ ?>
+
 <!DOCTYPE html>
 
 <head>
@@ -37,25 +51,27 @@
             <!-- <input type=text placeholder="Class" name= className> -->
             <!-- <div style="text-align:center; align:center"> -->
             <br><br><br><br><br><br>
-                <label>Class:</label>
-                <select name=className class="browser-default">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option name="className" value=Science>className</option>
-                    <option name="className" value=Math>className</option>
-                    <option name="className" value=PE>className</option>
-                    <option name="className" value=English>className</option>
-                </select>
+                
+
+                <!-- FORM TO GET SUBJECT -->
+                <label>Subject:</label>
+                <form class="white" action="add_class.php" method="GET">
+                	<input type="text" name="subject">
+                </form>
+
                 <br>
+                
+                 <!-- FORM TO GET SECTION -->
                 <label>Section:</label>
-                <select name=secName class="browser-default">
-                    <option value=secName disabled selected>Choose your option</option>
-                    <option value=A name="secName">secName</option>
-                    <option value=B name="secName">secName</option>
-                    <option value=C name="secName">secName</option>
-                    <option value=D name="secName">secName</option>
-                </select>
+                <form class="white" action="add_class.php" method="GET">
+                	<input type="text" name="section">
+                </form>
+
+
                 <br><br>
-                <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Add Class</button>
+                <!-- <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Add Class</button> -->
+
+                <input type="submit" name="submit" value="submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
 
             <!-- </div> -->
         </form>
