@@ -3,11 +3,46 @@
 	//connect to database
 	include('config/db_connect.php');
 
-	if(isset($_GET['submit'])) {
-		echo $_GET['subject'];
-		echo $_GET['section'];
-	}
+	$subject = $section = '';
+	$errors = array('subject'=>'', 'section'=>'');
 
+	if(isset($_POST['submit'])) {
+
+		//check subject for errors
+		if(empty($_POST['subject'])) {
+			$errors['subject'] = 'Subject is required';
+		} else {
+			$subject = htmlspecialchars($_POST['subject']);
+		}
+
+		//check subject for errors
+		if(empty($_POST['section'])) {
+			$errors['section'] = 'Section is required';
+		} else {
+			$section = htmlspecialchars($_POST['section']);
+		}
+
+		//check if there are errors
+		if(array_filter($errors)) {
+			//do nothing
+		} else {
+			//save data
+			$subject = mysqli_real_escape_string($conn, $_POST['subject']);
+			$section = mysqli_real_escape_string($conn, $_POST['section']);
+
+			//create sql
+			$sql = "INSERT INTO classes(subject,section) VALUES('$subject', '$section')";
+
+			//save to db and check
+			if(mysqli_query($conn, $sql)) {
+				//success
+				//redirect
+			header('Location: index.php');
+			} else {
+				echo 'query error: ' . mysqli_error($conn);
+			}			
+		}
+	}
 
 
  ?>
@@ -51,11 +86,14 @@
 
                 
        			<!-- FORM TO SEND DATA -->
-                <form class="white" action="add_class.php" method="GET">
+                <form class="white" action="add_class.php" method="POST">
                 	<label>Subject:</label>
-                	<input type="text" name="subject">
+                	<input type="text" name="subject" value="<?php echo $subject ?>">
+                	<div class="red-text"><?php echo $errors['subject']; ?></div>
+
                 	<label>Section:</label>
-                	<input type="text" name="section">
+                	<input type="text" name="section" value="<?php echo $section ?>">
+                	<div class="red-text"><?php echo $errors['section']; ?></div>
 
                 	<br><br>
                 	<input type="submit" name="submit" value="submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
