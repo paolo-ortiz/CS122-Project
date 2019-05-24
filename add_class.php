@@ -47,33 +47,22 @@
     </div>
     <br>
     <div class="container" style="text-align:center; align:center">
-        <form action="index.php" method=POST>
-            <!-- <input type=text placeholder="Class" name= className> -->
-            <!-- <div style="text-align:center; align:center"> -->
-            <br><br><br><br><br><br>
-                
+            <br><br><br><br><br><br>        
 
-                <!-- FORM TO GET SUBJECT -->
-                <label>Subject:</label>
+                
+       			<!-- FORM TO SEND DATA -->
                 <form class="white" action="add_class.php" method="GET">
+                	<label>Subject:</label>
                 	<input type="text" name="subject">
+                	<label>Section:</label>
+                	<input type="text" name="section">
+
+                	<br><br>
+                	<input type="submit" name="submit" value="submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
                 </form>
 
                 <br>
                 
-                 <!-- FORM TO GET SECTION -->
-                <label>Section:</label>
-                <form class="white" action="add_class.php" method="GET">
-                	<input type="text" name="section">
-                </form>
-
-
-                <br><br>
-                <!-- <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Add Class</button> -->
-
-                <input type="submit" name="submit" value="submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
-
-            <!-- </div> -->
         </form>
     </div>
 </body>
