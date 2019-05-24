@@ -1,3 +1,39 @@
+<?php 
+
+	//connect to database
+	include('config/db_connect.php');
+
+	//write query for all classes
+	$sql = 'SELECT classID, subject, section FROM classes';	
+	//make query & get result
+	$result = mysqli_query($conn, $sql);	
+	//fetch resulting rows as array
+	$sections = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+	//free memory
+	mysqli_free_result($result);
+
+	//close connection
+	//mysqli_close($conn);
+
+	//check if deleted
+	if(isset($_POST['delete'])) {
+		$id_to_delete = mysqli_real_escape_string($conn, $_POST["id_to_delete"]);
+
+		//make sql
+		$sql = "DELETE FROM classes WHERE classID = $id_to_delete";
+
+		if(mysqli_query($conn, $sql)) {
+			//success
+
+		} else {
+			//fail
+			echo 'query error: ' . mysqli_error($conn);
+		}
+	}
+
+ ?>
+
 <!DOCTYPE html>
 <head>
 	<title>INPUT SCREEN 2</title>
@@ -38,8 +74,14 @@
 				</div>
 				<div class="container" style="text-align:left">
 				<p style="color:#595E80;">Remove A Class</p>
-				<form action=remove_class.php method=POST>
-					<label>Class:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+				<!-- DELETING CLASSES -->
+				<form action='remove_class.php' method=POST>
+					<input type="text" name=id_to_delete>
+
+					<input type="submit" name="delete" value="Delete" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
+
+					<!-- <label>Class:&nbsp;&nbsp;&nbsp;&nbsp;</label>
 					<select style="width:150px" name=className class="browser-default">
 						<option value="" disabled selected>Choose Class</option>
 						<option name="className" value=Science>Science</option>
@@ -57,8 +99,8 @@
 						<option value=D name="secName">D</option>
 					</select>
 					<br />
-						<!-- <input type=text placeholder="Class" name= className> -->
-						<button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Remove Class</button>
+						 <input type=text placeholder="Class" name= className>
+						<button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Remove Class</button> --> 
 					</form>
 				</div>
 
@@ -75,28 +117,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Class_Variable</td>
-		<td>Section_Variable</td>
-      <td>
-		  <form action=edit_class.php method=POST>
-		  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    </tr>
-    <tr>
-      <th scope="row">2</th>
-	  <td>Class_Variable</td>
-		<td>Section_Variable</td>
-      <td>
-		  <form action=edit_class.php method=POST>
-		  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Class_Variable</td>
-		<td>Section_Variable</td>
-      <td>
-		  <form action=edit_class.php method=POST>
-		<button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>
-    </tr>
+
+  	<!--DISPLAY TABLE IN MIDDLE FOR CLASS INFO
+	goes through the sections table in database and returns
+	the info for each section
+  	 -->
+	<?php foreach($sections as $section): ?>
+		<tr>
+			<th scope="row"><?php echo $section['classID']; ?></th>
+	        <td><?php echo $section['subject']; ?></td>
+			<td><?php echo $section['section']; ?></td>
+	        <td>
+			  <form action=edit_class.php method=POST>
+			  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    
+		</tr>
+	<?php endforeach; ?>
+	<!--END OF MIDDLE TABLE-->
+
   </tbody>
 </table>
 	</div>
