@@ -4,11 +4,11 @@
     include('config/db_connect.php');
 
     //write query for getting subject info
-    $sql = "SELECT classID, subject, section FROM classes"; 
+    $sql = "SELECT requirementID, requirementType, requirementHPS, requirementPassing, requirementScore FROM grades"; 
     //make query & get result
     $result = mysqli_query($conn, $sql);    
     //fetch resulting rows as array
-    $sections = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $grades = mysqli_fetch_all($result, MYSQLI_ASSOC);
     //free memory
     mysqli_free_result($result);
  ?>
@@ -58,8 +58,7 @@
             <table class="table table-striped" style="text-align:center">
                 <thead>
                     <tr>
-                        <!-- <th scope="col">ID Number</th>
-                        <th scope="col">Last Name</th> -->
+
                         <th scope="col">Requirement #</th>
                         <th scope="col">Type</th>
                         <th scope="col">HPS</th>
@@ -69,32 +68,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php  ?>
                     <!-- DISPLAY GRADE TABLE -->
-                    <!-- <tr>
-                        <td>student_id</td>
-                        <td>lastName</td>
-                        <td>quiz_n</td>
-                        <td> exam_n</td>
-                        <td>c_standing</td>
-                        <td>total</td>
-
-                    <tr>
-                        <td>student_id</td>
-                        <td>lastName</td>
-                        <td>quiz_n</td>
-                        <td> exam_n</td>
-                        <td>c_standing</td>
-                        <td>total</td>
-                    <tr>
-                        <td>student_id</td>
-                        <td>lastName</td>
-                        <td>quiz_n</td>
-                        <td> exam_n</td>
-                        <td>c_standing</td>
-                        <td>total</td>
-                        </td>
-                    </tr> -->
+                    <?php foreach($grades as $grade): ?>
+                        <tr>
+                            <td><?php echo $grade['requirementID']; ?></td>
+                            <td><?php echo $grade['requirementType']; ?></td>
+                            <td><?php echo $grade['requirementHPS']; ?></td>
+                            <td><?php echo $grade['requirementPassing']; ?></td>
+                            <td><?php echo $grade['requirementScore']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
                     <!-- END DISPLAY GRADE TABLE -->
                 </tbody>
             </table>
