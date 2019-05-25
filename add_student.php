@@ -1,3 +1,12 @@
+<?php 
+
+
+
+
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -43,16 +52,13 @@
                 <label for=student_id><b>ID Number: </b></label>
                 <input type=number placeholder='123456' name=student_id required>
                 <br>
-                <label for=lastName><b>Last Name: </b></label>
-                <input type=text placeholder='e.g. Dela Cruz' name=lastName required>
+                <label for=name><b>Student</b></label>
+                <input type=text placeholder='e.g. Juan Dela Cruz' name=name required>
                 <br>
-                <label for=firstName><b>First Name: </b></label>
-                <input type=text placeholder='e.g. Juan' name=firstName required>
+                <label for=section><b>Section  </b></label>
+                <input type=text placeholder='A' name=section required>
                 <br>
-                <label for=email><b>Email: </b></label>
-                <input type=text placeholder='e.g. juan.delacruz@gmail.com' name=email required>
-                <br>
-                <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Return</button>
+                <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit" value = "Submit", name = "submit" >Add</button>
             </div>
         </form>
     </body>

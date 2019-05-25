@@ -1,3 +1,66 @@
+<?php
+
+    //connect to database
+	include("config/db_connect.php");
+
+
+
+
+//	$className = $subject = ""; //initialize values
+    $studentID =$name =$section ="";
+	$errors = array("student_id"=>"", "name"=>"", "section" => ""); //create array for errors
+
+	//for sending the input to server
+	if (isset($_POST["submit"])) {
+		
+		//CHECK IF FIELDS ARE EMPTY
+		//check teacher name
+		if (empty($_POST["student_id"])) {
+			$errors["student_id"] = "student_idis required <br />";
+		} else {
+			$studentID = $_POST["student_id"];
+		}
+		//check class name
+		if (empty($_POST["name"])) {
+			$errors["name"] = "Name is required <br />";
+		} else {
+			$name = $_POST["name"];
+		}
+
+        if (empty($_POST["section"])) {
+            $errors["section"] = "Section is required <br />";
+        } else {
+            $section = $_POST["section"];
+        }
+
+		//if there are no errors, redirect to homepage
+		//if there are errors in $errors array, do nothing
+		if (array_filter($errors)) {
+			//do nothing
+		} else {
+			$studentID = mysqli_real_escape_string($conn, $_POST["student_id"]);
+			$name = mysqli_real_escape_string($conn, $_POST["name"]);
+            $section = mysqli_real_escape_string($conn, $_POST["section"]);
+
+			//create sql
+			$sql = "INSERT INTO student(studentID, SectionName, StudentName) VALUES('$studentID', '$section', '$name')";
+
+			//save to db and check
+			if (mysqli_query($conn, $sql)) {
+				//success
+				header('Location: index.php'); //redirect to homepage
+			} else {
+				//error
+				echo "query error: " . mysqli_error($conn);
+			}
+
+
+		}
+
+	} //END OF POST
+?>
+
+
 <!DOCTYPE html>
 <head>
     <title>INPUT SCREEN 2</title>

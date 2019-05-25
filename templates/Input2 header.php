@@ -1,3 +1,31 @@
+<?php 
+		//connect to database
+	include('config/db_connect.php');
+	//write query for all classes
+	$sql = 'SELECT  SubjectID, Subject.name sectionName FROM subject, section WHERE ';	
+	//make query & get result
+	$result = mysqli_query($conn, $sql);	
+	//fetch resulting rows as array
+	$sections = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	//free memory
+	mysqli_free_result($result);
+	//close connection
+	//mysqli_close($conn);
+	//check if deleted
+	if(isset($_POST['delete'])) {
+		$id_to_delete = mysqli_real_escape_string($conn, $_POST["id_to_delete"]);
+		//make sql
+		$sql = "DELETE FROM classes WHERE classID = $id_to_delete";
+		if(mysqli_query($conn, $sql)) {
+			//success
+		} else {
+			//fail
+			echo 'query error: ' . mysqli_error($conn);
+		}
+	}
+ ?>
+
+
 <!DOCTYPE html>
 <head>
 	<title>INPUT SCREEN 2</title>
@@ -40,21 +68,28 @@
 				<p style="color:#595E80;">Remove A Class</p>
 				<form action=remove_class.php method=POST>
 					<label>Class:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-					<select style="width:150px" name=className class="browser-default">
-						<option value="" disabled selected>Choose Class</option>
-						<option name="className" value=Science>Science</option>
+					<select style="width:150px" name=className class="browser-default">	
+					<option value="" disabled selected>Choose Class</option>
+					
+					<!--	<option name="className" value=Science>Science</option> 
 						<option name="className" value=Math>Mathematics</option>
 						<option name="className" value=PE>Physical Education</option>
-						<option name="className" value=English>English</option>
+						<option name="className" value=English>English</option> 
+					-->
+					
 					</select>
 					<br>
 					<label>Section: </label>
 					<select style="width:150px" name=secName class="browser-default">
 						<option value="secName" disabled selected>Choose Section</option>
+
+					<!-- Will add things here with regards to database
 						<option value=A name="secName">A</option>
 						<option value=B name="secName">B</option>
 						<option value=C name="secName">C</option>
 						<option value=D name="secName">D</option>
+
+					-->	
 					</select>
 					<br />
 						<!-- <input type=text placeholder="Class" name= className> -->
@@ -75,28 +110,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Class_Variable</td>
-		<td>Section_Variable</td>
-      <td>
-		  <form action=edit_class.php method=POST>
-		  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    </tr>
-    <tr>
-      <th scope="row">2</th>
-	  <td>Class_Variable</td>
-		<td>Section_Variable</td>
-      <td>
-		  <form action=edit_class.php method=POST>
-		  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Class_Variable</td>
-		<td>Section_Variable</td>
-      <td>
-		  <form action=edit_class.php method=POST>
-		<button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>
-    </tr>
+
+	<!--DISPLAY TABLE IN MIDDLE FOR CLASS INFO
+	goes through the sections table in database and returns
+	the info for each section
+  	 -->
+	<?php foreach($sections as $section): ?>
+		<tr>
+			<th scope="row"><?php echo $section['classID']; ?></th>
+	        <td><?php echo $section['subject']; ?></td>
+			<td><?php echo $section['section']; ?></td>
+	        <td>
+			  <form action=edit_class.php method=POST>
+			  <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">Edit Class</button></form></td>    
+		</tr>
+	<?php endforeach; ?>
+	<!--END OF MIDDLE TABLE-->
+
   </tbody>
 </table>
 	</div>
