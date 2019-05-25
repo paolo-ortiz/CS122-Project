@@ -1,12 +1,17 @@
-<!-- <!DOCTYPE html>
-<?php /*
-echo $_POST["req_type"];
-echo "<br>";
-echo $_POST["passing_score"];
-echo "<br>";
-echo $_POST["hpscore"];
-*/
-?> -->
+<?php 
+
+    //connect to database
+    include('config/db_connect.php');
+
+    //write query for getting subject info
+    $sql = "SELECT classID, subject, section FROM classes"; 
+    //make query & get result
+    $result = mysqli_query($conn, $sql);    
+    //fetch resulting rows as array
+    $sections = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    //free memory
+    mysqli_free_result($result);
+ ?>
 
 <!DOCTYPE html>
 
@@ -53,16 +58,20 @@ echo $_POST["hpscore"];
             <table class="table table-striped" style="text-align:center">
                 <thead>
                     <tr>
-                        <th scope="col">ID Number</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Quiz # n</th>
-                        <th scope="col">Exam # n</th>
-                        <th scope="col">Class Standing</th>
-                        <th scope="col">Total</th>
+                        <!-- <th scope="col">ID Number</th>
+                        <th scope="col">Last Name</th> -->
+                        <th scope="col">Requirement #</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">HPS</th>
+                        <th scope="col">Passing</th>
+                        <th scope="col">Score</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <?php  ?>
+                    <!-- DISPLAY GRADE TABLE -->
+                    <!-- <tr>
                         <td>student_id</td>
                         <td>lastName</td>
                         <td>quiz_n</td>
@@ -85,7 +94,8 @@ echo $_POST["hpscore"];
                         <td>c_standing</td>
                         <td>total</td>
                         </td>
-                    </tr>
+                    </tr> -->
+                    <!-- END DISPLAY GRADE TABLE -->
                 </tbody>
             </table>
         </div>

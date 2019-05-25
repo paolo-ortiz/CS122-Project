@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 25, 2019 at 01:57 PM
+-- Generation Time: May 25, 2019 at 02:12 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -45,6 +45,28 @@ INSERT INTO `classes` (`classID`, `subject`, `section`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `requirementID` int(11) NOT NULL,
+  `requirementType` varchar(255) NOT NULL,
+  `requirementHPS` int(11) NOT NULL,
+  `requirementPassing` int(11) NOT NULL,
+  `requirementScore` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `grades`
+--
+
+INSERT INTO `grades` (`requirementID`, `requirementType`, `requirementHPS`, `requirementPassing`, `requirementScore`) VALUES
+(1, 'Quiz', 15, 10, 12),
+(2, 'LT', 50, 25, 30);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -72,6 +94,12 @@ INSERT INTO `students` (`studentID`, `firstName`, `lastName`, `email`) VALUES
 --
 ALTER TABLE `classes`
   ADD PRIMARY KEY (`classID`);
+
+--
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`requirementID`);
 
 --
 -- Indexes for table `students`
