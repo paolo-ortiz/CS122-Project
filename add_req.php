@@ -81,7 +81,7 @@
 	       			 <div class="container" style="text-align:center;color:#595E80;">
 
 	       			 	<label>Requirement #:</label>
-		                <input type="number" placeholder='e.g. 1' name="requirementHPS" required>
+		                <input type="number" placeholder='e.g. 1' name="requirementID" required>
 		                <br>
 		                
 		                <label>Highest Possible Score:</label>

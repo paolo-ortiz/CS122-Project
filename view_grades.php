@@ -3,6 +3,21 @@
     //connect to database
     include('config/db_connect.php');
 
+      if(isset($_POST['delete'])) {
+        $id_to_delete = mysqli_real_escape_string($conn, $_POST["id_to_delete"]);
+
+        //make sql
+        $sql = "DELETE FROM grades WHERE requirementID = $id_to_delete";
+
+        if(mysqli_query($conn, $sql)) {
+            //success
+
+        } else {
+            //fail
+            echo 'query error: ' . mysqli_error($conn);
+        }
+    } 
+
     //write query for getting subject info
     $sql = "SELECT requirementID, requirementType, requirementHPS, requirementPassing, requirementScore FROM grades"; 
     //make query & get result
@@ -11,6 +26,9 @@
     $grades = mysqli_fetch_all($result, MYSQLI_ASSOC);
     //free memory
     mysqli_free_result($result);
+
+      //check if deleted
+  
  ?>
 
 <!DOCTYPE html>
@@ -48,12 +66,18 @@
                 <nav class="nav flex-sm-column">
                     <div class="container" style="text-align:left">
                         <p style="color:#595E80;">Add Requirement</p>
-                        <form action=add_req.php method=POST>
+                        <form action= add_req.php method=POST>
                             <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Add</button>
-
-
+                            </form>
+                              <!-- remove requirement -->
+                            <p style="color:#595E80;">Remove Requirement</p>
+                        <form action=remove_req.php method=POST>
+                            <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Remove</button>
             </nav>
         </div>
+
+
+
         <div id="table" class="col-sm" style="align:left;">
             <table class="table table-striped" style="text-align:center">
                 <thead>

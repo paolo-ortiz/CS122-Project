@@ -10,21 +10,6 @@
     //fetch resulting rows as array
     $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    //check if deleted
-    if(isset($_POST['delete'])) {
-        $id_to_delete = mysqli_real_escape_string($conn, $_POST["id_to_delete"]);
-
-        //make sql
-        $sql = "DELETE FROM students WHERE studentID = $id_to_delete";
-
-        if(mysqli_query($conn, $sql)) {
-            //success
-        } else {
-            //fail
-            echo 'query error: ' . mysqli_error($conn);
-        }
-
-    }
 
  ?>
 
