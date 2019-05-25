@@ -15,7 +15,7 @@
 			$subject = htmlspecialchars($_POST['subject']);
 		}
 
-		//check subject for errors
+		//check section for errors
 		if(empty($_POST['section'])) {
 			$errors['section'] = 'Section is required';
 		} else {
@@ -98,6 +98,7 @@
                 	<br><br>
                 	<input type="submit" name="submit" value="submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
                 </form>
+                <!-- END FORM TO SEND DATA -->
 
                 <br>
                 

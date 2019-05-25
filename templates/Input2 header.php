@@ -3,18 +3,14 @@
 	//connect to database
 	include('config/db_connect.php');
 
-	//write query for all classes
-	$sql = 'SELECT classID, subject, section FROM classes';	
+	//write query for getting subject info
+	$sql = "SELECT classID, subject, section FROM classes";	
 	//make query & get result
 	$result = mysqli_query($conn, $sql);	
 	//fetch resulting rows as array
 	$sections = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
 	//free memory
 	mysqli_free_result($result);
-
-	//close connection
-	//mysqli_close($conn);
 
 	//check if deleted
 	if(isset($_POST['delete'])) {
@@ -23,13 +19,14 @@
 		//make sql
 		$sql = "DELETE FROM classes WHERE classID = $id_to_delete";
 
+
 		if(mysqli_query($conn, $sql)) {
 			//success
-
 		} else {
 			//fail
 			echo 'query error: ' . mysqli_error($conn);
 		}
+
 	}
 
  ?>
@@ -81,27 +78,8 @@
 
 					<input type="submit" name="delete" value="Delete" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
 
-					<!-- <label>Class:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-					<select style="width:150px" name=className class="browser-default">
-						<option value="" disabled selected>Choose Class</option>
-						<option name="className" value=Science>Science</option>
-						<option name="className" value=Math>Mathematics</option>
-						<option name="className" value=PE>Physical Education</option>
-						<option name="className" value=English>English</option>
-					</select>
-					<br>
-					<label>Section: </label>
-					<select style="width:150px" name=secName class="browser-default">
-						<option value="secName" disabled selected>Choose Section</option>
-						<option value=A name="secName">A</option>
-						<option value=B name="secName">B</option>
-						<option value=C name="secName">C</option>
-						<option value=D name="secName">D</option>
-					</select>
-					<br />
-						 <input type=text placeholder="Class" name= className>
-						<button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Remove Class</button> --> 
 					</form>
+				<!-- END OF DELETING CLASSES -->
 				</div>
 
 			</nav>
