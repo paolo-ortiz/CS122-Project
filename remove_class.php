@@ -1,15 +1,7 @@
 <?php //connect to database
     include('config/db_connect.php');
 
-    //write query for all classes
-    $sql = 'SELECT classID, subject, section FROM classes'; 
-    //make query & get result
-    $result = mysqli_query($conn, $sql);    
-    //fetch resulting rows as array
-    $sections = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-    //free memory
-    mysqli_free_result($result);
 
     //close connection
     //mysqli_close($conn);

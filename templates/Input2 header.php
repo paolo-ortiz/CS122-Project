@@ -74,7 +74,7 @@
 
 				<!-- DELETING CLASSES -->
 				<form action='remove_class.php' method=POST>
-					<input type="text" name=id_to_delete>
+					<input type="text" name=id_to_delete required>
 
 					<input type="submit" name="delete" value="Delete" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
 

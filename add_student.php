@@ -106,19 +106,19 @@
             <body class="grey lighten-4">
             <div class=container style="align:center; text-align:center">
                 <label><b>ID Number: </b></label>
-                <input type="text" placeholder='123456' name="studentID">
+                <input type="text" placeholder='123456' name="studentID" required>
                 <br>
 
                 <label><b>Last Name: </b></label>
-                <input type="text" placeholder='e.g. Dela Cruz' name="lastName">
+                <input type="text" placeholder='e.g. Dela Cruz' name="lastName" required>
                 <br>
 
                 <label><b>First Name: </b></label>
-                <input type="text" placeholder='e.g. Juan' name="firstName">
+                <input type="text" placeholder='e.g. Juan' name="firstName" required="">
                 <br>
 
                 <label><b>Email: </b></label>
-                <input type="text" placeholder='e.g. juan.delacruz@gmail.com' name="email">
+                <input type="text" placeholder='e.g. juan.delacruz@gmail.com' name="email" required="">
                 <br>
 
                 <input type="submit" name="submit" value="Submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
