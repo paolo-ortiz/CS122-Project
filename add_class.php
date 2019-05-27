@@ -1,3 +1,52 @@
+<?php 
+
+	//connect to database
+	include('config/db_connect.php');
+
+	$subject = $section = '';
+	$errors = array('subject'=>'', 'section'=>'');
+
+	if(isset($_POST['submit'])) {
+
+		//check subject for errors
+		if(empty($_POST['subject'])) {
+			$errors['subject'] = 'Subject is required';
+		} else {
+			$subject = htmlspecialchars($_POST['subject']);
+		}
+
+		//check section for errors
+		if(empty($_POST['section'])) {
+			$errors['section'] = 'Section is required';
+		} else {
+			$section = htmlspecialchars($_POST['section']);
+		}
+
+		//check if there are errors
+		if(array_filter($errors)) {
+			//do nothing
+		} else {
+			//save data
+			$subject = mysqli_real_escape_string($conn, $_POST['subject']);
+			$section = mysqli_real_escape_string($conn, $_POST['section']);
+
+			//create sql
+			$sql = "INSERT INTO classes(subject,section) VALUES('$subject', '$section')";
+
+			//save to db and check
+			if(mysqli_query($conn, $sql)) {
+				//success
+				//redirect
+			header('Location: index.php');
+			} else {
+				echo 'query error: ' . mysqli_error($conn);
+			}			
+		}
+	}
+
+
+ ?>
+
 <!DOCTYPE html>
 
 <head>
@@ -33,31 +82,26 @@
     </div>
     <br>
     <div class="container" style="text-align:center; align:center">
-        <form action="index.php" method=POST>
-            <!-- <input type=text placeholder="Class" name= className> -->
-            <!-- <div style="text-align:center; align:center"> -->
-            <br><br><br><br><br><br>
-                <label>Class:</label>
-                <select name=className class="browser-default">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option name="className" value=Science>className</option>
-                    <option name="className" value=Math>className</option>
-                    <option name="className" value=PE>className</option>
-                    <option name="className" value=English>className</option>
-                </select>
-                <br>
-                <label>Section:</label>
-                <select name=secName class="browser-default">
-                    <option value=secName disabled selected>Choose your option</option>
-                    <option value=A name="secName">secName</option>
-                    <option value=B name="secName">secName</option>
-                    <option value=C name="secName">secName</option>
-                    <option value=D name="secName">secName</option>
-                </select>
-                <br><br>
-                <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Add Class</button>
+            <br><br><br><br><br><br>        
 
-            <!-- </div> -->
+                
+       			<!-- FORM TO SEND DATA -->
+                <form class="white" action="add_class.php" method="POST">
+                	<label>Subject:</label>
+                	<input type="text" name="subject" value="<?php echo $subject ?>">
+                	<div class="red-text"><?php echo $errors['subject']; ?></div>
+
+                	<label>Section:</label>
+                	<input type="text" name="section" value="<?php echo $section ?>">
+                	<div class="red-text"><?php echo $errors['section']; ?></div>
+
+                	<br><br>
+                	<input type="submit" name="submit" value="submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
+                </form>
+                <!-- END FORM TO SEND DATA -->
+
+                <br>
+                
         </form>
     </div>
 </body>

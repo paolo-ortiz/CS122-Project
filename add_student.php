@@ -1,3 +1,66 @@
+<?php 
+
+    //connect to database
+    include('config/db_connect.php');
+
+    $errors = array('studentID'=>'', 'lastName'=>'', 'firstName'=>'', 'email'=>'');
+
+    if(isset($_POST['submit'])) {
+
+        //check id number for errors
+        if(empty($_POST['studentID'])) {
+            $errors['studentID'] = 'ID Number is required';
+        } else {
+            $studentID = htmlspecialchars($_POST['studentID']);
+        }
+
+        //check last name for errors
+        if(empty($_POST['lastName'])) {
+            $errors['lastName'] = 'Last Name is required';
+        } else {
+            $lastName = htmlspecialchars($_POST['lastName']);
+        }
+
+        //check first name for errors
+        if(empty($_POST['firstName'])) {
+            $errors['firstName'] = 'First Name is required';
+        } else {
+            $firstName = htmlspecialchars($_POST['firstName']);
+        }
+
+        //check email for errors
+        if(empty($_POST['email'])) {
+            $errors['email'] = 'Email is required';
+        } else {
+            $email = htmlspecialchars($_POST['email']);
+        }
+
+        //check if there are errors
+        if(array_filter($errors)) {
+            //do nothing
+        } else {
+            //save data
+            $studentID = mysqli_real_escape_string($conn, $_POST['studentID']);
+            $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
+            $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
+
+            //create sql
+            $sql = "INSERT INTO students(studentID,lastName,firstName,email) VALUES('$studentID', '$lastName', '$firstName', '$email')";
+
+            //save to db and check
+            if(mysqli_query($conn, $sql)) {
+                //success
+                //redirect
+            header('Location: edit_class.php');
+            } else {
+                echo 'query error: ' . mysqli_error($conn);
+            }           
+        }
+    }
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,24 +99,33 @@
         </form>
     </nav>
     <br>
-        <form action=edit_class.php method=POST>
-            <!-- <input type=text placeholder="Class" name= tclass> -->
+
+        <!-- FORM TO SEND DATA -->
+        <form action="add_student.php" method="POST">
+
             <body class="grey lighten-4">
             <div class=container style="align:center; text-align:center">
-                <label for=student_id><b>ID Number: </b></label>
-                <input type=number placeholder='123456' name=student_id required>
+                <label><b>ID Number: </b></label>
+                <input type="text" placeholder='123456' name="studentID" required>
                 <br>
-                <label for=lastName><b>Last Name: </b></label>
-                <input type=text placeholder='e.g. Dela Cruz' name=lastName required>
+
+                <label><b>Last Name: </b></label>
+                <input type="text" placeholder='e.g. Dela Cruz' name="lastName" required>
                 <br>
-                <label for=firstName><b>First Name: </b></label>
-                <input type=text placeholder='e.g. Juan' name=firstName required>
+
+                <label><b>First Name: </b></label>
+                <input type="text" placeholder='e.g. Juan' name="firstName" required="">
                 <br>
-                <label for=email><b>Email: </b></label>
-                <input type=text placeholder='e.g. juan.delacruz@gmail.com' name=email required>
+
+                <label><b>Email: </b></label>
+                <input type="text" placeholder='e.g. juan.delacruz@gmail.com' name="email" required="">
                 <br>
-                <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Return</button>
+
+                <input type="submit" name="submit" value="Submit" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
+
+                <!-- <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Return</button> -->
             </div>
         </form>
+        <!-- END FORM TO SEND DATA -->
     </body>
 </html>

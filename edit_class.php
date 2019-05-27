@@ -1,3 +1,18 @@
+<?php 
+
+    //connect to database
+    include('config/db_connect.php');
+
+    //write query for all classes
+    $sql = 'SELECT studentID, firstName, lastName, email FROM students'; 
+    //make query & get result
+    $result = mysqli_query($conn, $sql);    
+    //fetch resulting rows as array
+    $students = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+
+ ?>
+
 <!DOCTYPE html>
 
 <head>
@@ -8,11 +23,9 @@
         .brand {
             background: #29b6f6 !important;
         }
-
         .brand-text {
             color: #29b6f6 !important;
         }
-
         label {
             width: 100px;
         }
@@ -37,13 +50,20 @@
             <div class="col-sm-auto">
                 <nav class="nav flex-sm-column">
                     <div class="container" style="text-align:left">
+
+                        <!-- REMOVING STUDENT -->
                         <p style="color:#595E80;">Remove Student</p>
-                        <form action=remove_student.php method=POST>
-                            <label for=student_id><b>ID Number:</b></label>
-                            <input type=number placeholder="e.g. 123456" name=student_id required>
+                        <form action='remove_student.php' method=POST>
+                            <label><b>ID Number:</b></label>
+                            <input type="text" placeholder="e.g. 12345" name=id_to_delete required>
                             <br>
-                            <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Remove</button>
+
+                            <input type="submit" name="delete" value="Delete" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">
+
+                            <!-- <button class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;" type="submit">Remove</button> -->
                         </form>
+                        <!-- END OF REMOVING STUDENT -->
+
                     </div>
                     <div class="container" style="text-align:left">
                         <p style="color:#595E80;">Add Student</p>
@@ -67,37 +87,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>student_id</td>
-                            <td>lastName</td>
-                            <td>firstName</td>
-                            <td>email </td>
+
+                        <!-- DISPLAYING STUDENTS TABLE -->
+                        <?php foreach($students as $student): ?>
+                            <tr>
+                            <td><?php echo $student['studentID']; ?></td>
+                            <td><?php echo $student['lastName']; ?></td>
+                            <td><?php echo $student['firstName']; ?></td>
+                            <td><?php echo $student['email']; ?></td>
                             <td>
                                 <form action=view_grades.php method=POST>
                                     <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">View Grades</button></form>
                             </td>
-                        </tr>
-                        </tr>
-                        <tr>
-                            <td>student_id</td>
-                            <td>lastName</td>
-                            <td>firstName</td>
-                            <td>email </td>
-                            <td>
-                                <form action=view_grades.php method=POST>
-                                    <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">View Grades</button></form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>student_id</td>
-                            <td>lastName</td>
-                            <td>firstName</td>
-                            <td>email </td>
-                            <td>
-                                <form action=view_grades.php method=POST>
-                                    <button class="btn btn-primary  my-2 my-sm-0" style="border-color:#5262CC; color:white; background:#5262CC;" type="submit">View Grades</button></form>
-                            </td>
-                        </tr>
+                        </tr> 
+                        <?php endforeach; ?>
+
+
                     </tbody>
                 </table>
             </div>
