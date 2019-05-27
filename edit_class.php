@@ -40,7 +40,7 @@
             <!-- class="d-inline-block align-top" alt=""> -->
             <strong>Edit Class</strong>
         </a>
-        <form action=input1.html method=POST>
+        <form action=input1.php method=POST>
             <button class="btn btn-outline-secondary my-2 my-sm-0" style="border-color:#B3BDFF; color:#B3BDFF;" type="submit"> Log Out</button>
         </form>
     </nav>
@@ -55,7 +55,7 @@
                         <p style="color:#595E80;">Remove Student</p>
                         <form action='remove_student.php' method=POST>
                             <label><b>ID Number:</b></label>
-                            <input type="text" placeholder="e.g. 12345" name=id_to_delete>
+                            <input type="text" placeholder="e.g. 12345" name=id_to_delete required>
                             <br>
 
                             <input type="submit" name="delete" value="Delete" class="btn btn-outline-light my-2 my-sm-0" style="border-color:#5262CC; color:#5262CC;">

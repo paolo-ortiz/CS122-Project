@@ -1,18 +1,12 @@
-
-
-Drop database csProject;
---
-
-CREATE Database csProject;
---
 -- phpMyAdmin SQL Dump
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 25, 2019 at 02:12 PM
+-- Generation Time: May 27, 2019 at 01:56 PM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -23,6 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `csProject`
+--
 
 -- --------------------------------------------------------
 
@@ -41,8 +39,8 @@ CREATE TABLE `classes` (
 --
 
 INSERT INTO `classes` (`classID`, `subject`, `section`) VALUES
-(19, 'English', 'B'),
-(21, 'English', 'F');
+(23, 'PE', '122A'),
+(24, 'English', '16B');
 
 -- --------------------------------------------------------
 
@@ -64,7 +62,8 @@ CREATE TABLE `grades` (
 
 INSERT INTO `grades` (`requirementID`, `requirementType`, `requirementHPS`, `requirementPassing`, `requirementScore`) VALUES
 (1, 'Quiz', 15, 10, 12),
-(2, 'LT', 50, 25, 30);
+(2, 'Exam', 40, 25, 31),
+(4, 'Homework', 10, 5, 7);
 
 -- --------------------------------------------------------
 
@@ -74,6 +73,7 @@ INSERT INTO `grades` (`requirementID`, `requirementType`, `requirementHPS`, `req
 
 CREATE TABLE `students` (
   `studentID` int(11) NOT NULL,
+  `classID` int(11) NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
@@ -83,9 +83,9 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`studentID`, `firstName`, `lastName`, `email`) VALUES
-(1, 'Juan', 'Dela Cruz', 'jdc@gmail.com'),
-(2, 'Paolo', 'Ortiz', 'ortizpaologabriel@gmail.com');
+INSERT INTO `students` (`studentID`, `classID`, `firstName`, `lastName`, `email`) VALUES
+(171669, 0, 'Paolo', 'Ortiz', 'ortizpaologabriel@gmail.com'),
+(171670, 0, 'Matthew', 'Ng', 'matthewng@yahoo.com');
 
 --
 -- Indexes for dumped tables
@@ -117,7 +117,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `classID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `classID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

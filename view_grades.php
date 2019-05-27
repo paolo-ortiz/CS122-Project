@@ -52,10 +52,10 @@
     <!--BACKGROUND-->
     <nav class="navbar navbar-light" style="background-color:#333D80; color:#B3BDFF; font-face: 16px-apple-system">
         <a class="navbar-brand" href="#" style="color:#B3BDFF;">
-            <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-            <strong>Section <?php echo $_POST["secName"]; ?></strong>
+            
+            <strong>Section</strong>
         </a>
-        <form action=input1.html method=POST>
+        <form action=input1.php method=POST>
             <button class="btn btn-outline-secondary my-2 my-sm-0" style="border-color:#B3BDFF; color:#B3BDFF;" type="submit"> Log Out</button>
         </form>
     </nav>

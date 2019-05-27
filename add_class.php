@@ -37,7 +37,7 @@
 			if(mysqli_query($conn, $sql)) {
 				//success
 				//redirect
-			header('Location: index.php');
+			header('Location: Input2 header.php');
 			} else {
 				echo 'query error: ' . mysqli_error($conn);
 			}			
@@ -75,7 +75,7 @@
             <a class="navbar-brand" href="#" style="color:#B3BDFF;">
                 <strong>Add a Class</strong>
             </a>
-            <form action=input1.html method=POST>
+            <form action=input1.php method=POST>
                 <button class="btn btn-outline-secondary my-2 my-sm-0" style="border-color:#B3BDFF; color:#B3BDFF;" type="submit"> Log Out</button>
             </form>
         </nav>

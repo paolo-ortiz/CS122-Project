@@ -9,7 +9,8 @@
 <!DOCTYPE html>
 <html>
 
-	<?php include("templates/Input2 header.php") ?>
+
+	<?php include("input1.php") ?>
 
 
 

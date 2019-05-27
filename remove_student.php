@@ -52,7 +52,7 @@
                 <!-- class="d-inline-block align-top" alt=""> -->
             <strong>Remove Student</strong>
         </a>
-        <form action=input1.html method=POST>
+        <form action=input1.php method=POST>
             <button class="btn btn-outline-secondary my-2 my-sm-0" style="border-color:#B3BDFF; color:#B3BDFF;"
                 type="submit"> Log Out</button>
         </form>
@@ -60,11 +60,11 @@
     <br>
     <div style="text-align:center">
         <?php
-        echo "You have successfully removed ";
-        echo $_POST["firstName"];
-        echo $_POST["lastName"];
-        echo " ID Number ";
-        echo $_POST["student_id"];
+        echo "You have successfully removed student.";
+        //echo $_POST["firstName"];
+       // echo $_POST["lastName"];
+        //echo " ID Number ";
+        //echo $_POST["student_id"];
         ?>
         </p>
         <form action=edit_class.php method=POST>
